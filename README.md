@@ -26,7 +26,7 @@ which is below human hearing threshhold. To match the input impedance to the loa
 ## Impedance Matching Circuit
 | Circuit Schematic by Richard Mudhar. See [here](https://www.richardmudhar.com/piezo-contact-microphone-hi-z-amplifier-low-noise-version/) | Self-built Circuit |
 |----------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------|
-| ![Impedance Matching Circuit Design by Richard Mudhar](https://i0.wp.com/www.richardmudhar.com/blog/wp-content/uploads/2018/12/RM_piezo_amp-1.png)                  | ![Picture of self-built Circuit](./assets/images/impedancematchingCircuit.jpg) |
+| ![Impedance Matching Circuit Design by Richard Mudhar](https://i0.wp.com/www.richardmudhar.com/blog/wp-content/uploads/2018/12/RM_piezo_amp-1.png)                  | ![Picture of self-built Circuit](./assets/images/impedancematchingCircuit.webp) |
                                                                                                                                                     
 ### Usage of circuit
 
@@ -46,8 +46,8 @@ The circuit is built with a comparison between impedance-matched and not impedan
 
 |                       | Absolute dB Reference | Relative dB Reference (individual normalization) |
 |-----------------------|-----------------------|--------------------------------------------------|
-| Not impedance matched | ![Spectrogram of not impedance matched input with absolute values](./assets/images/NoAmpPreFilterAbsolute.png)                      | ![Spectrogram of not impedance matched input with normalizedValues](./assets/images/NoAmpPreFilterNormalized.png)                                                 |
-| impedance matched | ![Spectrogram of impedance matched input with absolute values](./assets/images/AmpPreFilterAbsolute.png)                      | ![Spectrogram of impedance matched input with normalizedValues](./assets/images/AmpPreFilterNormalized.png)                                                 |
+| Not impedance matched | ![Spectrogram of not impedance matched input with absolute values](./assets/images/NoAmpPreFilterAbsolute.webp)                      | ![Spectrogram of not impedance matched input with normalizedValues](./assets/images/NoAmpPreFilterNormalized.webp)                                                 |
+| impedance matched | ![Spectrogram of impedance matched input with absolute values](./assets/images/AmpPreFilterAbsolute.webp)                      | ![Spectrogram of impedance matched input with normalizedValues](./assets/images/AmpPreFilterNormalized.webp)                                                 |
 
 ### Measurement Setup
 The measurements where done with piezo elements with about $20\, \mathrm{nF}$ capacitance on inputs 0 and 1 on the [bela gem multi](https://bela.io/products/bela-gem-stereo-and-multi/) which have an adjustable input impedance between $2.5\, \mathrm{k\Omega}$ and $20\, \mathrm{k\Omega}$ according to [here](https://forum.bela.io/d/7307-audio-input-impedance).
@@ -79,7 +79,7 @@ If all piezos are connected in parrallel to the input, the detected signal resem
 
 ### Measurement Setup
 
-![Image of Measurement Setup with four piezos, labeled C1 to C4 and one Exciter, labeled E1](./assets/images/latencyMeasurementSetup.jpeg)
+![Image of Measurement Setup with four piezos, labeled C1 to C4 and one Exciter, labeled E1](./assets/images/latencyMeasurementSetup.webp)
 
 To measure an examplatory latency as a proof-of-theory 4 piezos labeled *C1** to *C4* and one Exciter labeled *E1* were placed on a wooden board. The piezos are roughly arranged to resemble the following 5 cm grid:
 
@@ -93,7 +93,7 @@ The following image shows the latency between the individual channels. The top-m
 
 ### Latency
 
-![Waveform of four-channel piezo recording showing the latency between each channel](./assets/images/latencyMeasurementRecording.png)
+![Waveform of four-channel piezo recording showing the latency between each channel](./assets/images/latencyMeasurementRecording.webp)
 
 The Image shows that *C2* is the first piezo to detect the Impulse, followed by *C3*, *C4* and almost at the same time*C1*. This order proofs that the latency is dependent on the distance of the piezos to the exciter as *C2* is closest to *E1* and *C1* furthest apart. The recordings were done at a Samplerate of $f = 44100\, \mathrm{Hz}$ and the dots in the waveforms resemble the individual sample. To get a grasp of the amount of latency we can count the samples between the waveforms. *C3* detects the impulse $\approx 5$ after *C2* which results in a latency of $\Delta t \approx \frac{5}{44100 \, \mathrm{Hz}} \approx 1.13 \times 10^{-4}$ so about $\frac{1}{10}$ of a Millisecond.
 
@@ -101,7 +101,7 @@ The Image shows that *C2* is the first piezo to detect the Impulse, followed by 
 
 More importantly to consider is the characteristic of each waveform. As shown in the figure above, the waveform looks quite differently between the individual channels. This is probably due to force reflections inside of the wooden plate. For example *C2* and *C3* start with a small dip before the on-set rise of the signal while *C1* and *C4* behave almost exactly opposite, starting with a small rise before a big dip. It almost looks like the piezos *C1* and *C4* were differently polarized to *C2* and *C3* which should not have been the case.
 
-![Waveform of four-channel piezo recording with the summed waveform included](./assets/images/latencyMeasurementRecordingSum.png)
+![Waveform of four-channel piezo recording with the summed waveform included](./assets/images/latencyMeasurementRecordingSum.webp)
 
 This figure includes the digital sum of the 4 piezo channels, which should approximately resemble the analog sum, if the piezos would have been connected in parallel at one input. The summed signal clearly has its one unique waveform compared to the individual piezos.
 
