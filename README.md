@@ -12,7 +12,8 @@ where $R$ is the Restistance at the input, and $C$ the capacitance of the piezo 
 $R = 10.000\, \Omega$
 and
 $C = 15\,\mathrm{nF}$
-the cutoff frequency is $\approx 1061\, \mathrm{Hz}$
+the cutoff frequency is 
+$\approx 1061\, \mathrm{Hz}$
 
 To counteract the filtering of low frequency content while recording with piezo elements, it is required to match the input resistance to the capacitance of the piezo. Having a large enough input resistance, the cutoff frequency is lowered until irrelevant for the individual setup. A input impedance of $1\mathrm{M\Omega}$ results in a cutoff frequency of
 
@@ -66,3 +67,45 @@ However due to the high impedance of the circuit, the piezo element and especial
 #### Expected High Pass Filtering
 
 It is really odd, that there is only a slight increase in lower frequency content with the impedance matched input. The absolute values show a significant difference in strength between the matched and non-matched signal, but looking at the right column, which shows the normalized signals, a visible decrease in lower frequency content for the not impedance matched signal is expected. A slight decrease can only be seen at around $70\, \mathrm{Hz}$, which does not align with the expected $\approx 1000\, \mathrm{Hz}$ cutoff. This will require further investigation.
+
+
+## Multi-Piezo Setup
+
+### Theoretical Considerations
+
+Using multiple piezo-elements as *one* sensor runs the risk of interference. This is due to the different traveling times of the mechanical force in the specific medium. The travel time of the force is probably a characteristic of the specific material used as the surface for the piezos. Using multiple piezos therefore makes it more challenging regarding exact on-set detection.
+
+If all piezos are connected in parrallel to the input, the detected signal resembles the sum of the individual piezos. This sum is susceptible to interference. If for example two piezos are placed in such a way, that the latency between the piezos (determined by the distance between them relative to the point of excitement) is exactly half the duration of the period of the frequency of the excitement, the individual piezos detect the signal exactly half a phase apart. Summing them at the input then results in massive phase cancelation and no reliable detection of the specific frequency. Therefore it exists a relationship between the placements of the piezos, the material of the surface and the frequencies that get canceled or amplified by the phase interference. To test this, following measurements where made.
+
+### Measurement Setup
+
+![Image of Measurement Setup with four piezos, labeled C1 to C4 and one Exciter, labeled E1](./assets/images/latencyMeasurementSetup.jpeg)
+
+To measure an examplatory latency as a proof-of-theory 4 piezos labeled *C1** to *C4* and one Exciter labeled *E1* were placed on a wooden board. The piezos are roughly arranged to resemble the following 5 cm grid:
+
+| *C1* |      | *C4* |
+|------|------|------|
+|      | ***C2*** | ***C3*** |
+|      | ***E1*** |      |
+
+To test the latency, the exciter played Impulses spaced 1 second apart. Each piezo was recorded as a seperate audio channel to mitigate any interference between the piezo signals.
+The following image shows the latency between the individual channels. The top-most waveform resembles the recording of *C1* and then continuing down so that the lowest resemembles *C4*.
+
+### Latency
+
+![Waveform of four-channel piezo recording showing the latency between each channel](./assets/images/latencyMeasurementRecording.png)
+
+The Image shows that *C2* is the first piezo to detect the Impulse, followed by *C3*, *C4* and almost at the same time*C1*. This order proofs that the latency is dependent on the distance of the piezos to the exciter as *C2* is closest to *E1* and *C1* furthest apart. The recordings were done at a Samplerate of $f = 44100\, \mathrm{Hz}$ and the dots in the waveforms resemble the individual sample. To get a grasp of the amount of latency we can count the samples between the waveforms. *C3* detects the impulse $\approx 5$ after *C2* which results in a latency of $\Delta t \approx \frac{5}{44100 \, \mathrm{Hz}} \approx 1.13 \times 10^{-4}$ so about $\frac{1}{10}$ of a Millisecond.
+
+### Interference
+
+More importantly to consider is the characteristic of each waveform. As shown in the figure above, the waveform looks quite differently between the individual channels. This is probably due to force reflections inside of the wooden plate. For example *C2* and *C3* start with a small dip before the on-set rise of the signal while *C1* and *C4* behave almost exactly opposite, starting with a small rise before a big dip. It almost looks like the piezos *C1* and *C4* were differently polarized to *C2* and *C3* which should not have been the case.
+
+![Waveform of four-channel piezo recording with the summed waveform included](./assets/images/latencyMeasurementRecordingSum.png)
+
+This figure includes the digital sum of the 4 piezo channels, which should approximately resemble the analog sum, if the piezos would have been connected in parallel at one input. The summed signal clearly has its one unique waveform compared to the individual piezos.
+
+### Reflections
+
+The [latency](#latency) of $\frac{1}{10}$ of a Millisecond is for most use-cases probably irrelevant, but still puts a limit on the precision of on-set-detection times using a piezo-electric sensing setup. The more important aspect to consider is the interference. If the presumed reason for the different wave form characteristics of the piezos formulated in Chapter [Interference](#interference) is correct, the risk of interference is twofold. On the one hand, there is a risk of interference in the electrical domain, when summing individual piezos with specific latencies (as described in Chapter [Theoretical Considerations](#theoretical-considerations)). On the other hand there is a risk of interference inside of the surface material itself. If the force reflects at the edges of the excited surface there will be a multitude of interference patterns influencing the force that each piezo element detects.
+Still the question remains, if this is relevant for using piezo-elements to detect physical excitement, as the signal source there resembles a noise burst without any specific important frequency which one might want to detect. Having such a noisy (desired) signal relieves a lot of the pressure coming from interference considerations.
