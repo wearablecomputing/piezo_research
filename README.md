@@ -12,7 +12,7 @@ where $R$ is the Restistance at the input, and $C$ the capacitance of the piezo 
 $R = 10.000\, \Omega$
 and
 $C = 15\,\mathrm{nF}$
-the cutoff frequency is $ \approx 1061\, \mathrm{Hz}$.
+the cutoff frequency is $\approx 1061\, \mathrm{Hz}$
 
 To counteract the filtering of low frequency content while recording with piezo elements, it is required to match the input resistance to the capacitance of the piezo. Having a large enough input resistance, the cutoff frequency is lowered until irrelevant for the individual setup. A input impedance of $1\mathrm{M\Omega}$ results in a cutoff frequency of
 
@@ -63,6 +63,6 @@ It is clearly visible how the impedance matched input delivers far more overall 
 
 However due to the high impedance of the circuit, the piezo element and especially the cabling from the piezo element to the amplification circuit is very susceptible to electromagnetic fields and basically acts as an antenna. This can be seen in the spectrogram at the $50\, \mathrm{Hz}$ mark which is picked up strongly by the circuit (especially compared to the actual signal).
 
-#### Theoretical High Pass Filtering
+#### Expected High Pass Filtering
 
 It is really odd, that there is only a slight increase in lower frequency content with the impedance matched input. The absolute values show a significant difference in strength between the matched and non-matched signal, but looking at the right column, which shows the normalized signals, a visible decrease in lower frequency content for the not impedance matched signal is expected. A slight decrease can only be seen at around $70\, \mathrm{Hz}$, which does not align with the expected $\approx 1000\, \mathrm{Hz}$ cutoff. This will require further investigation.
