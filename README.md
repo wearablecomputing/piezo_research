@@ -109,3 +109,7 @@ This figure includes the digital sum of the 4 piezo channels, which should appro
 
 The [latency](#latency) of $\frac{1}{10}$ of a Millisecond is for most use-cases probably irrelevant, but still puts a limit on the precision of on-set-detection times using a piezo-electric sensing setup. The more important aspect to consider is the interference. If the presumed reason for the different wave form characteristics of the piezos formulated in Chapter [Interference](#interference) is correct, the risk of interference is twofold. On the one hand, there is a risk of interference in the electrical domain, when summing individual piezos with specific latencies (as described in Chapter [Theoretical Considerations](#theoretical-considerations)). On the other hand there is a risk of interference inside of the surface material itself. If the force reflects at the edges of the excited surface there will be a multitude of interference patterns influencing the force that each piezo element detects.
 Still the question remains, if this is relevant for using piezo-elements to detect physical excitement, as the signal source there resembles a noise burst without any specific important frequency which one might want to detect. Having such a noisy (desired) signal relieves a lot of the pressure coming from interference considerations.
+
+## TODO
+
+- [ ] Add sound-recordings to repo 
