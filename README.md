@@ -21,7 +21,7 @@ $$
 f = \frac{1}{2 pi (1 \times 10^{6}\Omega) (15 \times 10^{-9}\mathrm{F})} \approx 11 \mathrm{Hz}
 $$
 
-which is below human hearing threshhold. To match the input impedance to the load of the piezo a pre-amplifying circuit is needed.
+which is below human hearing threshold. To match the input impedance to the load of the piezo a pre-amplifying circuit is needed.
 
 ## Impedance Matching Circuit
 | Circuit Schematic by Richard Mudhar. See [here](https://www.richardmudhar.com/piezo-contact-microphone-hi-z-amplifier-low-noise-version/) | Self-built Circuit |
