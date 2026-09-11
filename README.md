@@ -9,16 +9,16 @@ f = \frac{1}{2 \pi R C}
 $$
 
 where $R$ is the Restistance at the input, and $C$ the capacitance of the piezo element. Using typical values of
-$R = 10.000\, \Omega$
+$R = 10.000 \Omega$
 and
-$C = 15\,\mathrm{nF}$
+$C = 15 \mathrm{nF}$
 the cutoff frequency is 
-$\approx 1061\, \mathrm{Hz}$
+$\approx 1061 \mathrm{Hz}$
 
 To counteract the filtering of low frequency content while recording with piezo elements, it is required to match the input resistance to the capacitance of the piezo. Having a large enough input resistance, the cutoff frequency is lowered until irrelevant for the individual setup. A input impedance of $1\mathrm{M\Omega}$ results in a cutoff frequency of
 
 $$
-f = \frac{1}{2 pi (1 \times 10^{6}\,\Omega) (15 \times 10^{-9}\,\mathrm{F})} \approx 11\, \mathrm{Hz}
+f = \frac{1}{2 pi (1 \times 10^{6}\Omega) (15 \times 10^{-9}\mathrm{F})} \approx 11 \mathrm{Hz}
 $$
 
 which is below human hearing threshhold. To match the input impedance to the load of the piezo a pre-amplifying circuit is needed.
@@ -50,7 +50,7 @@ The circuit is built with a comparison between impedance-matched and not impedan
 | impedance matched | ![Spectrogram of impedance matched input with absolute values](./assets/images/AmpPreFilterAbsolute.webp)                      | ![Spectrogram of impedance matched input with normalizedValues](./assets/images/AmpPreFilterNormalized.webp)                                                 |
 
 ### Measurement Setup
-The measurements where done with piezo elements with about $20\, \mathrm{nF}$ capacitance on inputs 0 and 1 on the [bela gem multi](https://bela.io/products/bela-gem-stereo-and-multi/) which have an adjustable input impedance between $2.5\, \mathrm{k\Omega}$ and $20\, \mathrm{k\Omega}$ according to [here](https://forum.bela.io/d/7307-audio-input-impedance).
+The measurements where done with piezo elements with about $20 \mathrm{nF}$ capacitance on inputs 0 and 1 on the [bela gem multi](https://bela.io/products/bela-gem-stereo-and-multi/) which have an adjustable input impedance between $2.5 \mathrm{k\Omega}$ and $20 \mathrm{k\Omega}$ according to [here](https://forum.bela.io/d/7307-audio-input-impedance).
 The left column shows absolute values of the two signals (with the same dB reference) to compare overall signal strength while the right column shows the normalized signals (with individual dB references) to compare the signal-to-noise ratio.
 
 The signal source comes from manual mechanical excitement of the piezo elements by hitting a wodden plate, with the piezos mounted on.
@@ -62,11 +62,11 @@ It is clearly visible how the impedance matched input delivers far more overall 
 
 #### 50 Hz Bump
 
-However due to the high impedance of the circuit, the piezo element and especially the cabling from the piezo element to the amplification circuit is very susceptible to electromagnetic fields and basically acts as an antenna. This can be seen in the spectrogram at the $50\, \mathrm{Hz}$ mark which is picked up strongly by the circuit (especially compared to the actual signal).
+However due to the high impedance of the circuit, the piezo element and especially the cabling from the piezo element to the amplification circuit is very susceptible to electromagnetic fields and basically acts as an antenna. This can be seen in the spectrogram at the $50 \mathrm{Hz}$ mark which is picked up strongly by the circuit (especially compared to the actual signal).
 
 #### Expected High Pass Filtering
 
-It is really odd, that there is only a slight increase in lower frequency content with the impedance matched input. The absolute values show a significant difference in strength between the matched and non-matched signal, but looking at the right column, which shows the normalized signals, a visible decrease in lower frequency content for the not impedance matched signal is expected. A slight decrease can only be seen at around $70\, \mathrm{Hz}$, which does not align with the expected $\approx 1000\, \mathrm{Hz}$ cutoff. This will require further investigation.
+It is really odd, that there is only a slight increase in lower frequency content with the impedance matched input. The absolute values show a significant difference in strength between the matched and non-matched signal, but looking at the right column, which shows the normalized signals, a visible decrease in lower frequency content for the not impedance matched signal is expected. A slight decrease can only be seen at around $70 \mathrm{Hz}$, which does not align with the expected $\approx 1000 \mathrm{Hz}$ cutoff. This will require further investigation.
 
 
 ## Multi-Piezo Setup
@@ -95,7 +95,7 @@ The following image shows the latency between the individual channels. The top-m
 
 ![Waveform of four-channel piezo recording showing the latency between each channel](./assets/images/latencyMeasurementRecording.webp)
 
-The Image shows that *C2* is the first piezo to detect the Impulse, followed by *C3*, *C4* and almost at the same time*C1*. This order proofs that the latency is dependent on the distance of the piezos to the exciter as *C2* is closest to *E1* and *C1* furthest apart. The recordings were done at a Samplerate of $f = 44100\, \mathrm{Hz}$ and the dots in the waveforms resemble the individual sample. To get a grasp of the amount of latency we can count the samples between the waveforms. *C3* detects the impulse $\approx 5$ after *C2* which results in a latency of $\Delta t \approx \frac{5}{44100 \, \mathrm{Hz}} \approx 1.13 \times 10^{-4}$ so about $\frac{1}{10}$ of a Millisecond.
+The Image shows that *C2* is the first piezo to detect the Impulse, followed by *C3*, *C4* and almost at the same time*C1*. This order proofs that the latency is dependent on the distance of the piezos to the exciter as *C2* is closest to *E1* and *C1* furthest apart. The recordings were done at a Samplerate of $f = 44100 \mathrm{Hz}$ and the dots in the waveforms resemble the individual sample. To get a grasp of the amount of latency we can count the samples between the waveforms. *C3* detects the impulse $\approx 5$ after *C2* which results in a latency of $\Delta t \approx \frac{5}{44100  \mathrm{Hz}} \approx 1.13 \times 10^{-4}$ so about $\frac{1}{10}$ of a Millisecond.
 
 ### Interference
 
